@@ -1,0 +1,52 @@
+version: "3.9"
+
+networks:
+  clean-architecture-template:
+
+volumes:
+  clean-architecture-template-backend-cache:
+  clean-architecture-template-db-volume:
+
+services:
+  clean-architecture-template-db:
+    restart: "no"
+    image: "postgres:15-alpine"
+    container_name: clean-architecture-template-db-development
+    networks:
+      clean-architecture-template:
+    volumes:
+      - "clean-architecture-template-db-volume:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_PASSWORD: "clean_architecture_template_password"
+      POSTGRES_USER: "clean_architecture_template_user"
+      POSTGRES_DB: "clean_architecture_template"
+    env_file:
+      - ".env"
+
+  clean-architecture-template-backend:
+    restart: "no"
+    build:
+      context: ../../backend/
+      dockerfile: ../docker/development/backend/Dockerfile
+    container_name: clean-architecture-template-backend-development
+    depends_on:
+      - clean-architecture-template-db
+    networks:
+      clean-architecture-template:
+    ports:
+        - "8000:8000"
+    volumes:
+      - "../../backend/:/app/"
+      - "../general_tools/wait-for:/tools/wait-for"
+      - "./backend/run-development.sh:/tools/run-development.sh"
+      - "clean-architecture-template-backend-cache:/root/.cache/pip"
+    environment:
+      SECRET_KEY: "fd!=^e#_pukzl#+2@apf-i2x7e*-%6@ucwg%fo9@ic-s(*t7jh"
+      DEBUG: "1"
+      POSTGRES_DB_HOST: "clean-architecture-template-db"
+      POSTGRES_DB_PORT: 5432
+      POSTGRES_DB_NAME: "clean_architecture_template"
+      POSTGRES_DB_USER: "clean_architecture_template_user"
+      POSTGRES_DB_PASSWORD: "clean_architecture_template_password"
+    env_file:
+      - ".env"

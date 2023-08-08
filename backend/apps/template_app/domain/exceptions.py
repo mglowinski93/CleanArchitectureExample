@@ -1,0 +1,2 @@
+class ExampleBusinessOperationFailed(Exception):
+    pass

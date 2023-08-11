@@ -18,6 +18,11 @@ To run development environment
 2. Execute `docker-compose up`.
 3. Open `http://localhost:8000` in browser.
 
+#### Running tests
+
+1. Build development environment as described above.
+2. Execute `docker exec -it  clean-architecture-template-backend-development make`.
+
 #### Admin Panel
 
 Admin Panel is a tool for managing records in a database.

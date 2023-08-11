@@ -17,3 +17,6 @@ class Template:
     def example_business_action(self):
         if True:  # Complex business condition check here.
             raise ExampleBusinessOperationFailed  # Oh no, business conditions are not met, action can't be proceeded.
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, Template) and vars(self) == vars(other)

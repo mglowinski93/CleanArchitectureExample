@@ -1,4 +1,4 @@
-from uuid import uuid4
+from uuid import uuid4, UUID
 
 import factory
 from faker import Faker
@@ -17,6 +17,10 @@ class TemplateFactory(factory.Factory):
     id = factory.LazyFunction(uuid4)
     value = factory.Faker("sentence")
     timestamp = factory.LazyFunction(get_current_utc_timestamp)
+
+
+def fake_template_id() -> UUID:
+    return uuid4()
 
 
 def fake_template_value() -> str:

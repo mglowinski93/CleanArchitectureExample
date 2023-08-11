@@ -9,7 +9,7 @@ from .factories import TemplateFactory
 
 
 @pytest.fixture
-def template() -> Template:
+def template_entity() -> Template:
     return TemplateFactory()
 
 

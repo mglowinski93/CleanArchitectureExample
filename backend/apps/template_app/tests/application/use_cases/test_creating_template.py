@@ -5,7 +5,6 @@ from apps.template_app.application.use_cases.creating_template import (
     CreatingTemplate,
     CreatingTemplateInputDto,
 )
-from apps.template_app.domain.entities import Template
 from ...factories import fake_template_value
 
 
@@ -18,7 +17,6 @@ def input_dto() -> CreatingTemplateInputDto:
 
 def test_create_template(
     template_repository_mock: TemplateRepository,
-    template: Template,
     creating_template: CreatingTemplate,
     input_dto: CreatingTemplateInputDto,
 ):

@@ -7,9 +7,9 @@ tests:
 	echo "Automated tests passed."
 
 black_check:
-	echo "Checking black for Backups service..."
+	echo "Checking black..."
 	black --check ./
-	echo "Black passed for Backups service."
+	echo "Black passed."
 
 import_linter:
 	echo "Checking imports restrictions..."

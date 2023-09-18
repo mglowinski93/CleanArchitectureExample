@@ -8,20 +8,29 @@ Template for software architecture proposed by `Robert C. Martin` in his
 Running of this project locally requires the following tools to be
 present on the host system:
 
-* `docker` (version 20.10.0+)
-* `docker-compose` (version 1.27.0+)
+* `docker` (version 23.05.0+)
+* `docker compose` (version 2.21.0+)
 
 ## Development environment
 
 To run development environment
-1. Go into `docker/development` folder.
-2. Execute `docker-compose up`.
-3. Open `http://localhost:8000` in browser.
+1. Go into `docker/development/` folder
+2. Execute
+
+  ```bash
+  docker compose up
+  ```
+
+3. Open `http://localhost:8000` in browser
 
 #### Running tests
 
-1. Build development environment as described above.
-2. Execute `docker exec -it  clean-architecture-template-backend-development make`.
+1. Build development environment as described above
+2. Execute
+
+  ```bash
+  docker exec -it  clean-architecture-template-backend-development make
+  ```
 
 #### Admin Panel
 

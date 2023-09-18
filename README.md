@@ -45,3 +45,7 @@ Password: `admin`
 
 API Documentation is available at
 [http://localhost:8000/api/swagger/](http://localhost:8000/api/swagger/).
+
+## Working with repository
+
+1. `backend` folder must be marked as `Sources Root` in `IDE` to make imports work
